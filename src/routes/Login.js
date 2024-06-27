@@ -51,20 +51,20 @@ class Login extends Component {
     processLogin = () => {
         const { username, password } = this.state;
 
-        const { adminLoginSuccess, adminLoginFail } = this.props;
+        const { userLoginSuccess, userLoginFail } = this.props;
         let loginBody = {
-            username: 'admin',
+            username: 'user',
             password: '123456'
         }
         //sucess
-        let adminInfo = {
+        let userInfo = {
             "tlid": "0",
             "tlfullname": "Administrator",
             "custype": "A",
             "accessToken": "eyJhbGciOiJIU"
         }
 
-        adminLoginSuccess(adminInfo);
+        userLoginSuccess(userInfo);
         this.refresh();
         this.redirectToSystemPage();
         try {
@@ -165,8 +165,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
+        userLoginFail: () => dispatch(actions.userLoginFail()),
     };
 };
 
