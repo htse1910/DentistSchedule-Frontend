@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 
 import * as actions from "../../store/actions";
-
+import { userLoginSuccess } from '../../store/actions/userActions';
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
 //import {handleLoginApi} from '../../services/userService';
@@ -38,13 +38,26 @@ class Login extends Component {
             errMessage: ''
         })
         try{
-            await handleLoginApi(this.state.username, this.state.password);
-        }catch(e){
-            console.log(e)
-            console.log('hoiduong ', e.message)
-            this.setState({
-                errMessage: e.message
-        });
+            let data = await handleLoginApi(this.state.username, this.state.password);
+            if(data && data.errCode !==0){
+                this.setState({
+                    errMessage: data.message
+                })
+            }
+            if(data && data.errCode === 0) {
+                this.props.userLoginSuccess(data.user)
+                console.log('login succeeds')
+            }
+        }catch(error){
+            if(error.response){
+                if(error.response.data){
+                    this.setState({
+                    errMessage: error.response.data.message
+                    });
+                }
+            }
+            console.log('hoiduong ', error.response)
+            
     }
 }
 
@@ -113,8 +126,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        
+        userLoginFail: () => dispatch(actions.userLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
     };
 };
 
