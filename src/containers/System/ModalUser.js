@@ -2,17 +2,31 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { emitter } from '../../utils/emitter';
 class ModalUser extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            email:'',
+            email: '',
             password: '',
             firstName: '',
             lastName: '',
             address: '',
         }
+        this.listenToEmitter();
+    }
+
+    listenToEmitter() {
+        emitter.on('EVENT_CLEAR_MODEL_DATA', () => {
+            this.setState({
+                email: '',
+                password: '',
+                firstName: '',
+                lastName: '',
+                address: '',
+            })
+        })
     }
 
     componentDidMount() {
@@ -22,21 +36,21 @@ class ModalUser extends Component {
     }
 
     handleOnChangeInput = (event, id) => {
-        let copyState = { ...this.state};
+        let copyState = { ...this.state };
         copyState[id] = event.target.value;
         this.setState({
             ...copyState
         });
     }
-    checkValideInput = () => {
+    checkValidateInput = () => {
         let isValid = true;
         let arrInput = ['email', 'password', 'firstName', 'lastName', 'address'];
-        for(let i=0; i<arrInput.length; i++){
+        for (let i = 0; i < arrInput.length; i++) {
 
-            console.log('check inside loop', this.state[arrInput[i]],arrInput[i])
-            if(!this.state[arrInput[i]]){
-                isValid=false;
-                alert('Missing parameter: '+arrInput[i]);
+            console.log('check inside loop', this.state[arrInput[i]], arrInput[i])
+            if (!this.state[arrInput[i]]) {
+                isValid = false;
+                alert('Missing parameter: ' + arrInput[i]);
                 break;
             }
         }
@@ -44,19 +58,19 @@ class ModalUser extends Component {
     }
 
     handleAddNewUser = () => {
-        let isValid= this.checkValideInput();
-        if(isValid === true) {
+        let isValid = this.checkValidateInput();
+        if (isValid === true) {
             this.props.createNewUser(this.state);
         }
     }
 
     render() {
         return (
-            <Modal 
-            isOpen={this.props.isOpen}
-            toggle={() => { this.toggle() }} 
-            className={'modal-user-container'}
-            size="lg"
+            <Modal
+                isOpen={this.props.isOpen}
+                toggle={() => { this.toggle() }}
+                className={'modal-user-container'}
+                size="lg"
             >
                 <ModalHeader toggle={() => { this.toggle() }}>Create a new user</ModalHeader>
                 <ModalBody>
