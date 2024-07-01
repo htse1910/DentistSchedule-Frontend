@@ -12,7 +12,7 @@ class UserManage extends Component {
         super(props);
         this.state = {
             arrUsers: [],
-            isOpenModalUser: false,
+			isOpenModalUser: false,
             isOpenModalEditUser: false,
             userEdit: {
 
@@ -106,6 +106,7 @@ class UserManage extends Component {
         console.log('Click save user: ', user)
     }
 
+
     render() {
         let arrUsers = this.state.arrUsers;
         return (
@@ -124,12 +125,12 @@ class UserManage extends Component {
                         editUser={this.doEditUser}
                     />
                 }
-                <div className="title text-center">Manage users with react</div>
+                <div className="title text-center">Manage Users</div>
                 <div className="mx-1">
                     <button
                         className="btn btn-primary px-3"
                         onClick={() => this.handleAddNewUser()}
-                    ><i className="fas fa-plus"></i>Add new user</button>
+                    ><i className="fas fa-plus"></i> Add new user</button>
 
                 </div>
                 <div className="user-table mt-4 mx-3">
