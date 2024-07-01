@@ -66,7 +66,7 @@ class HomeHeader extends Component {
                                 <div className="text-child">Sức khỏe tinh thần</div>
                             </div>
                             <div className="options-child">
-                                <div className="icon-child"><FontAwesomeIcon icon="fa-solid fa-teeth-open" /></div>
+                                <div className="icon-child"><i className="fa-solid fa-teeth-open"></i></div>
                             </div>
                         </div>
                     </div>
