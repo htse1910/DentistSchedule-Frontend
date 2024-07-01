@@ -12,6 +12,7 @@ class UserManage extends Component {
         super(props);
         this.state = {
             arrUsers: [],
+			isOpenModalUser: false,
             isOpenModalEditUser: false,
             userEdit: {
 
@@ -22,6 +23,7 @@ class UserManage extends Component {
     async componentDidMount() {
         await this.getAllUserFromReact();
     }
+
     getAllUserFromReact = async () => {
         let response = await getAllUsers('ALL');
         if (response && response.errCode === 0) {

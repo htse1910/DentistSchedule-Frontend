@@ -1,4 +1,26 @@
 {
+    "homeheader":{
+        "service": "Dịch vụ",
+        "searchdoctor": "Tìm bác sĩ theo dịch vụ",
+        "dental-facility": "Cơ sở nha khoa",
+        "select-a-dental-clinic": "Chọn phòng khám nha khoa",
+        "dentist": "Nha sĩ",
+        "select-a-dentist": "Chọn nha sĩ",
+        "dental-examination-package": "Gói khám răng miệng",
+        "general-dental-examination": "Khám răng miệng tổng quát",
+        "support": "Hỗ trợ"
+    },
+    "banner":{
+        "title1": "NỀN TẢNG ĐẶT LỊCH PHÒNG KHÁM NHA KHOA",
+        "title2": "CHĂM SÓC SỨC KHỎE RĂNG MIỆNG TOÀN DIỆN",
+        "child1": "Khám nha khoa",
+        "child2": "Khám từ xa",
+        "child3":"Khám tổng quát răng miệng",
+        "child4":"Sức khỏe tinh thần",
+        "child5":"Xét nghiệm"
+
+
+    },
     "common": {
         "add": "Thêm",
         "edit": "Sửa",
