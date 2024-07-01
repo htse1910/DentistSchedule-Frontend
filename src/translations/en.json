@@ -1,4 +1,24 @@
 {
+    "homeheader":{
+        "service": "Service",
+        "searchdoctor": "Find a dentist by services",
+        "dental-facility": "Dental Facility",
+        "select-a-dental-clinic": "Select a dental clinic",
+        "dentist": "Dentist",
+        "select-a-dentist": "Select a dentist",
+        "dental-examination-package": "Dental examination package",
+        "general-dental-examination": "General dental examination",
+        "support": "Support"
+    },
+    "banner":{
+        "title1": "DENTAL CLINIC BOOKING PLATFORM",
+        "title2": "TOTAL HEALTH DENTAL CARE",
+        "child1": "Dental examination",
+        "child2": "Remote examination",
+        "child3":"General dental check",
+        "child4":"Mental health",
+        "child5":"Examination"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",
