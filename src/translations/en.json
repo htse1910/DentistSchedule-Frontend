@@ -8,7 +8,8 @@
         "select-a-dentist": "Select a dentist",
         "dental-examination-package": "Dental examination package",
         "general-dental-examination": "General dental examination",
-        "support": "Support"
+        "support": "Support",
+        "welcome": "Welcome, "
     },
     "banner":{
         "title1": "DENTAL CLINIC BOOKING PLATFORM",
@@ -46,19 +47,19 @@
         "userpass-wrong": "Invalid username or password!"
     },
     "menu": {
-        "system": {
-            "header": "System",
-            "system-administrator": {
-                "header": "System Administrator",
-                "user-manage": "User manage",
-                "user-redux": "Manage User using redux",
-                "register-package-group-or-account": "Register service package for group/account"
-            },
-            "system-parameter": {
-                "header": "System-parameter"
-            }
-        }
-    },
+        "admin": {
+        "manage-user":"Users System",
+        "manage-doctor": "Manage dentists",
+        "manage-admin": "Manage admins",
+        "crud": "CRUD user",
+        "crud-redux": "CRUD Redux",
+        "clinic": "Dental CLinics",
+        "manage-clinic": "Manage Dental Clinics",
+        "specialty": "Specialties",
+        "manage-specialty": "Manage Specialties",
+        "handbook": "Handbook",
+        "manage-handbook": "Manage Handbook"
+        },
     "system": {
         "user-manage": {
             "fail-to-load-fouser": "Fail to load system users list",
@@ -137,4 +138,5 @@
             "sure-delete-assign": "Are you sure to unassign service package to customer?"
         }
     }
+}
 }
