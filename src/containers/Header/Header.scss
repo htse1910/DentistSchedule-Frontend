@@ -20,38 +20,41 @@
             font-size: $base-size + 1px;
         }
     }
-    .language-vi {
-        cursor: pointer;
-        opacity: 0.1;
-
-        &.active {
-            opacity: 1;
-
-            span {
-                color: orange;
+            .welcome{
+                margin-right: 10px;
             }
-        }
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-
-    .language-en {
-        margin: 0 10px;
-        cursor: pointer;
-        opacity: 0.1;
-
-        &.active {
-            opacity: 1;
-
-            span {
-                color: blue;
+            .language-vi {
+                cursor: pointer;
+                opacity: 0.1;
+    
+                &.active {
+                    opacity: 1;
+    
+                    span {
+                        color: orange;
+                    }
+                }
+    
+                &:hover {
+                    opacity: 1;
+                }
             }
-        }
-
-        &:hover {
-            opacity: 1;
-        }
-    }
+    
+            .language-en {
+                margin: 0 10px;
+                cursor: pointer;
+                opacity: 0.1;
+    
+                &.active {
+                    opacity: 1;
+    
+                    span {
+                        color: blue;
+                    }
+                }
+    
+                &:hover {
+                    opacity: 1;
+                }
+            }
 }
