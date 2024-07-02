@@ -10,7 +10,7 @@
         display: flex;
 
         .left-content {
-            width: 25%;
+            width: 20%;
             display: flex;
             align-items: center;
 
@@ -19,6 +19,8 @@
                 height: 100%;
                 width: 100%;
                 cursor: pointer;
+                transform:scale(0.5, 0.5);
+                margin-left: -45px;
             }
 
             i {
@@ -28,7 +30,7 @@
         }
 
         .center-content {
-            width: 50%;
+            width: 55%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -44,23 +46,63 @@
         .right-content {
             width: 25%;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
+
+            .support{
+                padding-right: 50px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                i{
+                    font-size: 15px;
+                    margin-right: 5px;
+                }
+            }
+            .language-vi{
+                cursor: pointer;
+                opacity: 0.1;
+                &.active{
+                    opacity: 1;
+                    span{
+                        color: orange;
+                    }
+                }
+                &:hover{
+                    opacity: 1;
+                }
+            }
+            .language-en{
+                margin: 0 10px;
+                cursor: pointer;
+                opacity: 0.1;
+                &.active{
+                    opacity: 1;
+                    span{
+                        color: blue;
+                    }
+                }
+                &:hover{
+                    opacity: 1;
+                }
+            }
         }
     }
 }
 
 .home-header-banner {
-    background: url('../../assets/images/header-background.jpg') center center no-repeat;
-    height: 600px;
+    background: url('../../assets/images/header-background.jpg');
+    height: 485px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
 
     .content-up {
-        border: 1px solid red;
-        height: 50%;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.25),rgba(255, 255, 255, 0.1));
+        height: 65%;
         padding-top: 20px;
 
         .title1 {
@@ -105,11 +147,12 @@
     }
 
     .content-down {
-        border: 1px solid red;
-        height: 50%;
+        height: 35%;
+        padding-bottom: 10px;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.9),rgba(255,255,255,1));
         display: flex;
+        align-items: flex-end;
         justify-content: center;
-
         .options {
             grid-gap: 30px;
             text-align: center;

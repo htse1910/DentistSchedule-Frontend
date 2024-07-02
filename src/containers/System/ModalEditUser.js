@@ -16,7 +16,7 @@ class ModalEditUser extends Component {
             firstName: '',
             lastName: '',
             address: '',
-        }//
+        }
     }
 
     componentDidMount() {
