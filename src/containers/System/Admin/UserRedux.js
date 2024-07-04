@@ -1,7 +1,7 @@
 import React, { Component, useReducer } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { LANGUAGES, CRUD_ACTIONS } from "../../../utils/constant";
+import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from "../../../utils";
 import * as actions from "../../../store/actions";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'
@@ -15,7 +15,7 @@ class UserRedux extends Component {
             genderArr: [],
             positionArr: [],
             roleArr: [],
-            previewImgURl: '',
+            previewImgURL: '',
             isOpen: false,
 
             email: '',
@@ -78,25 +78,27 @@ class UserRedux extends Component {
                 role: arrRoles && arrRoles.length > 0 ? arrRoles [0].key: '',
                 avatar: '',
                 action: CRUD_ACTIONS.CREATE,
+                previewImgURL: ''
             })
         }
         
     }
 
-    handleOnchangeImage = (event) => {
+    handleOnchangeImage = async (event) => {
         let data = event.target.files;
         let file = data[0];
         if (file) {
+            let base64 = await CommonUtils.getBase64(file);
             let objectUrl = URL.createObjectURL(file);
             this.setState({
-                previewImgURl: objectUrl,
-                avatar: file
+                previewImgURL: objectUrl,
+                avatar: base64
             })
         }
     }
 
     openPreviewImage = () => {
-        if (!this.state.previewImgURl) return;
+        if (!this.state.previewImgURL) return;
         this.setState({
             isOpen: true
         })
@@ -116,7 +118,8 @@ class UserRedux extends Component {
                 phonenumber: this.state.phoneNumber,
                 gender: this.state.gender,
                 roleId: this.state.role,
-                positionId: this.state.position
+                positionId: this.state.position,
+                avatar: this.state.avatar
             });
         } 
         if (action === CRUD_ACTIONS.EDIT){
@@ -130,7 +133,8 @@ class UserRedux extends Component {
                 phonenumber: this.state.phoneNumber,
                 gender: this.state.gender,
                 roleId: this.state.role,
-                positionId: this.state.position
+                positionId: this.state.position,
+                avatar: this.state.avatar
         });
     }
     
@@ -161,6 +165,11 @@ class UserRedux extends Component {
     }
 
     handleEditUserFromParent = (user) => {
+        let imageBase64 = '';
+        if(user.image){
+            imageBase64 = new Buffer(user.image,'base64').toString('binary');
+            //imageBase64 = `data:image/png;base64,${user.image}`;
+        }
         this.setState({
             email: user.email,
             password: 'HARDCODE',
@@ -172,9 +181,9 @@ class UserRedux extends Component {
             role: user.roleId,
             position: user.positionId,
             avatar:'',
+            previewImgURL: imageBase64,
             action: CRUD_ACTIONS.EDIT,
             userEditId: user.id
-
         })
     }
     render() {
@@ -300,7 +309,7 @@ class UserRedux extends Component {
                                     />
                                     <label className="label-upload" htmlFor="previewImg">Tải ảnh <i className="fas fa-upload"></i></label>
                                     <div className="preview-image"
-                                        style={{ backgroundImage: 'url(${this.state.previewImgURl})' }}
+                                        style={{ backgroundImage: `url(${this.state.previewImgURL})` }}
                                         onClick={() => this.openPreviewImage()}
                                     ></div>
                                 </div>
@@ -329,7 +338,7 @@ class UserRedux extends Component {
                 </div>
                 {this.state.isOpen === true &&
                     <Lightbox
-                        mainSrc={this.state.previewImgURl}
+                        mainSrc={this.state.previewImgURL}
                         onCloseRequest={() => this.setState({ isOpen: false })}
                     />
                 }
