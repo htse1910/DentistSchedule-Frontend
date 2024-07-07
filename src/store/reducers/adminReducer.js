@@ -34,7 +34,7 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state
             }
-        case actionTypes.FETCH_POSITION_FAILDED:
+        case actionTypes.FETCH_POSITION_FAILED:
             state.positions = [];
             return {
                 ...state,
@@ -44,7 +44,7 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state,
             }
-        case actionTypes.FETCH_ROLE_FAILDED:
+        case actionTypes.FETCH_ROLE_FAILED:
             state.roles = [];
             return {
                 ...state,
@@ -54,20 +54,22 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state,
             }
-        case actionTypes.FETCH_ALL_USERS_FAILDED:
+        case actionTypes.FETCH_ALL_USERS_FAILED:
             state.users = [];
             return {
                 ...state,
             }
-        case actionTypes.FETCH_TOP_DOCTOR_SUCCESS:
+        case actionTypes.FETCH_TOP_DOCTORS_SUCCESS:
             state.topDoctors = action.dataDoctors;
+            console.log('check topDoctors: ', state.topDoctors);
             return {
-                ...state
+                ...state,
             }
-        case actionTypes.FETCH_TOP_DOCTOR_FAILDED:
+        case actionTypes.FETCH_TOP_DOCTORS_FAILED:
             state.topDoctors = [];
+            console.log('check topDoctors: ', state.topDoctors);
             return {
-                ...state
+                ...state,
             }
         default:
             return state;

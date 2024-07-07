@@ -55,7 +55,7 @@ export const fetchPositionSuccess = (positionData) => ({
 })
 
 export const fetchPositionFailed = () => ({
-    type: actionTypes.FETCH_POSITION_FAILDED
+    type: actionTypes.FETCH_POSITION_FAILED
 })
 
 export const fetchRoleStart = () => {
@@ -80,7 +80,7 @@ export const fetchRoleSuccess = (roleData) => ({
 })
 
 export const fetchRoleFailed = () => ({
-    type: actionTypes.FETCH_ROLE_FAILDED
+    type: actionTypes.FETCH_ROLE_FAILED
 })
 
 export const createNewUser = (data) => {
@@ -102,7 +102,7 @@ export const createNewUser = (data) => {
 }
 
 export const saveUserFailed = () => ({
-    type: actionTypes.CREATE_USER_FAILDED
+    type: actionTypes.CREATE_USER_FAILED
 })
 
 export const saveUserSuccess = () => ({
@@ -134,7 +134,7 @@ export const fetchAllUsersSuccess = (data) => ({
 })
 
 export const fetchAllUsersFailed = () => ({
-    type: actionTypes.FETCH_ALL_USERS_FAILDED,
+    type: actionTypes.FETCH_ALL_USERS_FAILED,
 })
 
 export const deleteAUser = (userId) => {
@@ -162,7 +162,7 @@ export const deleteUserSuccess = () => ({
 })
 
 export const deleteUserFailed = () => ({
-    type: actionTypes.DELETE_USER_FAILDED
+    type: actionTypes.DELETE_USER_FAILED
 })
 
 export const editAUser = (data) => {
@@ -188,7 +188,7 @@ export const editUserSuccess = () => ({
     type: actionTypes.EDIT_USER_SUCCESS
 })
 export const editUserFailed = () => ({
-    type: actionTypes.EDIT_USER_FAILDED
+    type: actionTypes.EDIT_USER_FAILED
 })
 
 export const fetchTopDoctor = () => {
@@ -197,19 +197,20 @@ export const fetchTopDoctor = () => {
             let res = await getTopDoctorHomeService('');
             if(res && res.errCode === 0){
                 dispatch({
-                    type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
+                    type: actionTypes.FETCH_TOP_DOCTORS_SUCCESS,
                     dataDoctors: res.data
                 })
         }else{
             dispatch({
-                type: actionTypes.FETCH_TOP_DOCTORS_FAILDED
+                type: actionTypes.FETCH_TOP_DOCTORS_FAILED
             })
         }
+        console.log('check res success or failed: ', res)
 
         } catch (e) {
             console.log('FETCh_TOP_DOCTORS_FAILED: ',e)
             dispatch({
-                type: actionTypes.FETCH_TOP_DOCTORS_FAILDED
+                type: actionTypes.FETCH_TOP_DOCTORS_FAILED
             })
 
         }

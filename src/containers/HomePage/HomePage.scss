@@ -29,6 +29,9 @@
         background: #d7d7d7 !important;
     }
 }
+.slick-disabled {
+    display: none !important;
+}
 
 .section-share {
     &.section-specialty {
@@ -47,6 +50,16 @@
 
     .section-body {
         .section-customize {
+            .customize-border {
+                border: 2px solid #d7d7d7;
+                border-radius: 8px;
+                overflow: hidden;
+                display: flex; /* Ensures children (image and text) are side by side */
+                flex-direction: column; /* Stack items vertically */
+                align-items: center; /* Center items horizontally */
+                padding: 10px; /* Adjust padding as needed */
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow effect */
+            }
             .bg-image {
                 height: 150px;
                 width: 278px;
@@ -73,6 +86,17 @@
                 &.section-handbook {
                     background-image: url(../../assets/handbook/cam-nang1.jpg);
                 }
+            }
+            .position {
+                flex: 1; /* Take remaining space beside image */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 10px;
+            }
+        
+            .position > div {
+                margin-bottom: 5px;
             }
         }
     }
