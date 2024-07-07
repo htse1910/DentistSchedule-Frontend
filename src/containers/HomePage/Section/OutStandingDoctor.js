@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import * as actions from '../../../store/actions';
 import { LANGUAGES } from '../../../utils';
 
-
 class OutStandingDoctor extends Component {
     constructor(props) {
         super(props)
@@ -29,20 +28,20 @@ class OutStandingDoctor extends Component {
     }
 
     render() {
-        console.log('check topDoctorsRedux: ', this.props.topDoctorsRedux);
         let arrDoctors = this.state.arrDoctors;
+        console.log('check log', arrDoctors)
         let { language } = this.props;
-        arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors)
-        console.log('Rendering doctors: ', arrDoctors);
-
+        //arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors)
         return (
             <div className="section-share section-outstanding-doctor">
                 <div className="section-container">
                     <div className="section-header">
                         <span className="title-section">
-                            Bác sĩ nổi bật tuần qua
+                            <FormattedMessage id="homepage.outstanding-doctor"/>
                         </span>
-                        <button className="btn-section">xem thêm</button>
+                        <button className="btn-section">
+                            <FormattedMessage id="homepage.more-infor"/>
+                        </button>
                     </div>
                     <div className="section-body">
                         <Slider {...this.props.settings}>
@@ -73,7 +72,7 @@ class OutStandingDoctor extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 

@@ -75,6 +75,10 @@
             "save": "Save user",
             "edit": "Edit user"
         },
+        "homepage":{
+            "outstanding-doctor": "Last week's featured doctor",
+            "more-infor": "More infor"
+        },
     "system": {
         "user-manage": {
             "fail-to-load-fouser": "Fail to load system users list",

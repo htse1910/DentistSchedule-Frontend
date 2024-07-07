@@ -28,7 +28,7 @@ instance.interceptors.response.use(
         return response.data;
     }
     // if (data.hasOwnProperty('s') && !isSuccessStatusCode(data['s']) && data.hasOwnProperty('errmsg')) {
-    //     return Promise.reject(createError(response.status, data['s'], data['errmsg'], null, data['errcode'] ? data['errcode'] : ""));
+    //     return Promise.reject(createError(response.status, data['s'], data['errmsg'], null, data['errCode'] ? data['errCode'] : ""));
     // }
 
     //         // Return direct data to callback

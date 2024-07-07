@@ -76,6 +76,10 @@
         "save": "Lưu user",
         "edit": "Lưu thay đổi"
     },
+    "homepage":{
+        "outstanding-doctor": "Bác sĩ nổi bật",
+        "more-infor": "Xem thêm"
+    },
     "system": {
         "user-manage": {
             "fail-to-load-fouser": "Không thể tải về danh sách người dùng",
