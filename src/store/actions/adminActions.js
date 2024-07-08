@@ -1,7 +1,8 @@
 import actionTypes from './actionTypes';
 import {
     getAllCodeService, createNewUserService, getAllUsers,
-    deleteUserService, editUserService, getTopDoctorHomeService
+    deleteUserService, editUserService, getTopDoctorHomeService, getAllDoctors,
+    saveDetailDoctorService
 } from "../../services/userService";
 import { toast } from 'react-toastify';
 import { dispatch } from '../../redux';
@@ -216,3 +217,55 @@ export const fetchTopDoctor = () => {
         }
     }
 }
+export const fetchAllDoctors = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllDoctors('');
+            if(res && res.errCode === 0){
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
+                    dataDr: res.data
+                })
+        }else{
+            dispatch({
+                type: actionTypes.FETCH_ALL_DOCTORS_FAILED
+            })
+        }
+        console.log('check res success or failed: ', res)
+
+        } catch (e) {
+            console.log('FETCh_ALL_DOCTORS_FAILED: ',e)
+            dispatch({
+                type: actionTypes.FETCH_ALL_DOCTORS_FAILED
+            })
+
+        }
+    }
+}
+export const saveDetailDoctor = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await saveDetailDoctorService(data);
+            if(res && res.errCode === 0){
+                toast.success("Save infor detail doctor success");
+                dispatch({
+                    type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
+                })
+        }else{
+            toast.error("Save infor detail doctor error");
+            dispatch({
+                type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED
+            })
+        }
+
+        } catch (e) {
+            toast.error("Save infor detail doctor error");
+            console.log('SAVE_DETAIL_DOCTOR_FAILED: ',e)
+            dispatch({
+                type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED
+            })
+
+        }
+    }
+}
+
