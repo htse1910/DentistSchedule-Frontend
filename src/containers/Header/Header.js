@@ -6,7 +6,7 @@ import Navigator from '../../components/Navigator';
 import { adminMenu, doctorMenu } from './menuApp';
 import './Header.scss';
 import { LANGUAGES, USER_ROLE } from "../../utils";
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import _ from 'lodash';
 
 class Header extends Component {
@@ -21,9 +21,10 @@ class Header extends Component {
     }
     componentDidMount() {
         let { userInfo } = this.props;
+        console.log("User Info: ", userInfo); // Kiểm tra dữ liệu userInfo
         let menu = [];
         if (userInfo && !_.isEmpty(userInfo)) {
-            let role = userInfo.roleId;
+            let role = userInfo.roleID; // Sửa thành roleID
             if (role === USER_ROLE.ADMIN) {
                 menu = adminMenu;
             }
@@ -33,8 +34,11 @@ class Header extends Component {
         }
         this.setState({
             menuApp: menu
+        }, () => {
+            console.log("Menu Data: ", this.state.menuApp); // Kiểm tra dữ liệu menu
         })
     }
+
 
     render() {
         const { processLogout, language, userInfo } = this.props;
@@ -43,7 +47,7 @@ class Header extends Component {
             <div className="header-container">
                 {/* thanh navigator */}
                 <div className="header-tabs-container">
-                <Navigator menus={this.state.menuApp} />
+                    <Navigator menus={this.state.menuApp} />
                 </div>
 
                 <div className="languages">
@@ -69,7 +73,7 @@ class Header extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        language : state.app.language,
+        language: state.app.language,
         userInfo: state.user.userInfo,
     };
 };
