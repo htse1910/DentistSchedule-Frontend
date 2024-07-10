@@ -97,6 +97,15 @@
                 "book-free": " and book (free)"
             }
         },
+        "admin": {
+            "manage-doctor": {
+                "title": "Create more doctor information.",
+                "select-doctor": "Select doctor",
+                "intro": "Introduction:",
+                "add": "Create info",
+                "save": "Save info"
+            }
+        },
     "system": {
         "user-manage": {
             "fail-to-load-fouser": "Fail to load system users list",
